@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-export default function Login(){
+import { StoreContext } from '../Providers/Store'
+import { useContext } from "react"
+export default function Login(closeModalLogin){
+    const { setModalLogin } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
     function Login(data){
         fetch('http://127.0.0.1:3333/login',{
@@ -29,6 +32,7 @@ export default function Login(){
         return(
             <div>
                 <h1>Login</h1>
+                <button onClick={() => {setModalLogin(false)}}>Click for goodbye</button>
                 <form>
                     <label>Email</label>
                     <input

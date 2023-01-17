@@ -1,7 +1,10 @@
 import React from "react";
+import { StoreContext } from '../Providers/Store'
+import { useContext } from "react"
 import { useForm } from "react-hook-form";
 
-export default function Register(){
+export default function Register(closeModalRegister){
+    const { setModalRegister } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
 
     function Create(data){
@@ -30,6 +33,7 @@ export default function Register(){
     }
     return(
         <div>
+            <button onClick={() => setModalRegister(false)}>ddd</button>
             <h1>Register</h1>
             <form>
                 <label>Username</label>
