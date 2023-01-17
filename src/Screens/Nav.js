@@ -9,7 +9,7 @@ const { modalRegister, setModalRegister, modalLogin, setModalLogin } = useContex
     return(
         <div>
             <ul>
-            <li onClick={() => setModalRegister(true)}>Register</li>
+                <li onClick={() => setModalRegister(true)}>Register</li>
                 <li onClick={() => setModalLogin(true)}>Login</li>
                 {console.log(modalLogin)}
             </ul>
