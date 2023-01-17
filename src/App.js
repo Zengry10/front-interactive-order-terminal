@@ -2,19 +2,18 @@ import './App.css';
 import Register from './Modal/Register'
 import Login from './Modal/Login'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Link } from "react-router-dom";
 import Nav from './Screens/Nav'
 import Store from './Providers/Store'
+import Task from './Screens/Task'
 
 function App() {
   return (
-    <div className="App">
+    <div className="m-0">
       <Store>
         <BrowserRouter>
           <Nav/>
           <Routes>
-            <Route path='/register' element={<Register/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>
+            <Route path='/task' element={<Task/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>

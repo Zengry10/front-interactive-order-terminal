@@ -32,14 +32,14 @@ export default function Register(closeModalRegister){
             }) 
     }
     return(
-        <div className="max-w-2xl mx-auto">
-        <div className="relative w-full max-w-md px-4 h-full md:h-auto">
-            <div className="bg-white rounded-lg shadow relative dark:bg-gray-700">
+      
+        <div id="changeBgColor" className=" w-screen px-4 h-full  absolute bottom-0 pt-24 flex justify-center">
+            <div className="bg-white h-4/5 rounded-lg  relative dark:bg-gray-700 w-96">
                 <div className="flex justify-end p-2">
                     <button onClick={() => setModalRegister(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>                            </button>
                 </div>
-                <form className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" onSubmit={() => handleSubmit(Register)}>
+                <form className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" onSubmit={handleSubmit(Create)}>
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white">Créez un compte sur notre plateforme</h3>
                     <div>
                         <label htmlFor="username" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Ton nom d'utilisateur</label>
@@ -47,8 +47,9 @@ export default function Register(closeModalRegister){
                          name="username"
                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                          placeholder="name@company.com" 
-                         required
                          {...register("username", { required: true })}
+                         required
+                         
                          
                          />
                     </div>
@@ -58,9 +59,9 @@ export default function Register(closeModalRegister){
                         type="email" 
                         name="email" 
                         placeholder="name@company.com" 
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
-                        required
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         {...register("email", { required: true })}
+                        required
                         />
                     </div>
                     <div>
@@ -69,8 +70,8 @@ export default function Register(closeModalRegister){
                          name="password"
                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                          placeholder="name@company.com" 
-                         required
                          {...register("password", { required: true })}
+                         required
                          
                          />
                     </div>
@@ -80,8 +81,8 @@ export default function Register(closeModalRegister){
                          name="password"
                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                          placeholder="name@company.com" 
-                         required
                          {...register("password_confirmation", { required: true })}
+                         required
                          
                          />
                     </div>
@@ -112,6 +113,6 @@ export default function Register(closeModalRegister){
                 </form>
             </div>
         </div>
-    </div>
+   
     )
 }
