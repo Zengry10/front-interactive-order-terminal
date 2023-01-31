@@ -7,8 +7,9 @@ export default function Nav(){
 
 const { modalRegister, setModalRegister, modalLogin, setModalLogin } = useContext(StoreContext);
     return(
-        <div>
-            <ul>
+        <div className="flex justify-center">
+            <ul className="flex gap-2">
+                <li><Link to='/menu'>Menu</Link></li>
                 <li onClick={() => {setModalRegister(true);  setModalLogin(false)}}>Register</li>
                 <li onClick={() => {setModalLogin(true); setModalRegister(false)}}>Login</li>
             </ul>

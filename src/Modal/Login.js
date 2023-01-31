@@ -3,10 +3,10 @@ import React from "react";
 import { StoreContext } from '../Providers/Store'
 import { useContext } from "react"
 export default function Login(closeModalLogin){
-    const { setModalLogin } = useContext(StoreContext);
+    const { setModalLogin, setToken } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
     function Connect(data){
-        fetch('http://127.0.0.1:3333/login',{
+        fetch('http://localhost:3333/login',{
             method : "POST",
                 headers: {
         "access-control-allow-origin" : "*",
@@ -20,6 +20,9 @@ export default function Login(closeModalLogin){
             res.json().then((json) =>{
                     if (res.ok){
                         alert('Vous etes connectez')
+                        setModalLogin(false)
+                        localStorage.setItem('token', json.token.token)
+                        setToken(json.token.token)
                     }
                     else{
                         alert('Donnée invalide')

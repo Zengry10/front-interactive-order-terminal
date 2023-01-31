@@ -4,7 +4,7 @@ import Login from './Modal/Login'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Nav from './Screens/Nav'
 import Store from './Providers/Store'
-import Task from './Screens/Task'
+import Menu from './Screens/Menu'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <Nav/>
           <Routes>
-            <Route path='/task' element={<Task/>}></Route>
+            <Route path='/menu' element={<Menu/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>

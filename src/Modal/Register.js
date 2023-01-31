@@ -4,18 +4,19 @@ import { useContext } from "react"
 import { useForm } from "react-hook-form";
 
 export default function Register(closeModalRegister){
-    const { setModalRegister } = useContext(StoreContext);
+    const { setModalRegister, setModalLogin } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
 
     function Create(data){
-        fetch('http://127.0.0.1:3333/register',{
+        fetch('http://localhost:3333/register',{
             method : "POST",
                 headers: {
       "access-control-allow-origin" : "*",
       "Content-type": "application/json; charset=UTF-8"
     },
             body: JSON.stringify({
-                username : data.username,
+                firstname : data.firstname,
+                lastname : data.lastname,
                 email: data.email,
                 password: data.password,
                 password_confirmation: data.password_confirmation
@@ -24,6 +25,8 @@ export default function Register(closeModalRegister){
             res.json().then((json) =>{
                     if (res.status === 201){
                         alert('Compte crée')
+                        setModalLogin(true)
+                        setModalRegister(false)
                     }
                     else{
                         alert('Donnée invalide')
@@ -42,12 +45,24 @@ export default function Register(closeModalRegister){
                 <form className="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" onSubmit={handleSubmit(Create)}>
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white">Créez un compte sur notre plateforme</h3>
                     <div>
-                        <label htmlFor="username" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Ton nom d'utilisateur</label>
-                        <input type="username"
-                         name="username"
+                        <label htmlFor="firstname" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Ton Prénom</label>
+                        <input type="firstname"
+                         name="firstname"
                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                          placeholder="name@company.com" 
-                         {...register("username", { required: true })}
+                         {...register("firstname", { required: true })}
+                         required
+                         
+                         
+                         />
+                    </div>
+                    <div>
+                        <label htmlFor="lastname" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Ton Nom</label>
+                        <input type="lastname"
+                         name="lastname"
+                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                         placeholder="name@company.com" 
+                         {...register("lastname", { required: true })}
                          required
                          
                          
