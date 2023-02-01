@@ -37,7 +37,7 @@ export default function Register(closeModalRegister){
     return(
       
         <div id="changeBgColor" className=" w-screen px-4 h-full  absolute bottom-0 pt-24 flex justify-center">
-            <div className="bg-white h-4/5 rounded-lg  relative dark:bg-gray-700 w-96">
+            <div className="bg-white h-5/5 rounded-lg  relative dark:bg-gray-700 w-96">
                 <div className="flex justify-end p-2">
                     <button onClick={() => setModalRegister(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>                            </button>
