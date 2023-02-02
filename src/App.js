@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Nav from './Screens/Nav'
 import Store from './Providers/Store'
 import Menu from './Screens/Menu'
+import MenuBurger from './Screens/MenuBurger'
 import MenuComplement from './Screens/MenuComplement'
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
         <BrowserRouter>
           <Nav/>
           <Routes>
-            <Route path='/menu' element={<Menu/>}></Route>
-            <Route path='/menu/:id' element={<MenuComplement/>}></Route>
+            <Route path='/menu/' element={<Menu/>}></Route>
+            <Route path='/menu/:id' element={<MenuBurger/>}></Route>
+            <Route path='/menu/component/:id' element={<MenuComplement/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>
