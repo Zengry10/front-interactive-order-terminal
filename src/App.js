@@ -7,6 +7,7 @@ import Store from './Providers/Store'
 import Menu from './Screens/Menu'
 import MenuBurger from './Screens/MenuBurger'
 import MenuComplement from './Screens/MenuComplement'
+import MenuDrink from './Screens/MenuDrink'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/menu/' element={<Menu/>}></Route>
             <Route path='/menu/:id' element={<MenuBurger/>}></Route>
             <Route path='/menu/component/:id' element={<MenuComplement/>}></Route>
+            <Route path='/menu/drink/:id' element={<MenuDrink/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>

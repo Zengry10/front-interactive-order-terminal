@@ -37,10 +37,10 @@ export default function MenuBurger(){
             {
               article.burgers[0].ingredients.map((ingredient) => {
                 return (
-                  <li className="flex items-center mb-4">
+                  <li className="flex items-center mb-4 gap-2">
                     <p className="flex-1">{ingredient.name}</p>
-                    <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                    <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                   </li>
                 )
               })
