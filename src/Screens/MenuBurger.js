@@ -1,30 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
+import { useContext } from "react";
+import { StoreContext } from '../Providers/Store'
 
 export default function MenuBurger(){
     let location = useLocation()
     let navigate = useNavigate()
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
+    const { storeMenu, setStoreMenu } = useContext(StoreContext);
     console.log(article)
 
 
     useEffect(() => {
-        if (location && location.state && location.state.article) {
-            setArticle(location.state.article)
-        } else {
-            setError("Les données ne sont pas disponibles")
-            navigate("/")
-        }
+      if (location && location.state && location.state.article) {
+        setArticle(location.state.article)
+      } else {
+        setError("Les données ne sont pas disponibles")
+        navigate("/")
+      }
+    }, [location.state.article])
 
-    }, [])
+    const handleAddToOrder = (burger) => {
+      if (storeMenu.length === 0) {
+        setStoreMenu([burger]);
+      } else {
+        setStoreMenu([]);
+        setStoreMenu([burger]);
+      }
+    };
 
     if (error) {
         return <div>{error}</div>
     }
 
-    if (article && article.burgers &&article.burgers.length > 0 && article.burgers[0].ingredients && article.burgers[0].ingredients.length > 0) {
+    if (article && article !== null && article.burgers &&article.burgers.length > 0 && article.burgers[0].ingredients && article.burgers[0].ingredients.length > 0) {
         return (
 <div className="bg-gray-200 h-screen w-full mb-32 overflow-hidden" key={article.id}>
   <div className="flex justify-center mt-20">
@@ -37,11 +48,13 @@ export default function MenuBurger(){
             {
               article.burgers[0].ingredients.map((ingredient) => {
                 return (
+                  <div key={ingredient.id}>
                   <li className="flex items-center mb-4 gap-2">
                     <p className="flex-1">{ingredient.name}</p>
                     <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
                     <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                   </li>
+                  </div>
                 )
               })
             }
@@ -49,9 +62,11 @@ export default function MenuBurger(){
         </div>
       </div>
       <Link to={`/menu/component/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
-        <div className="bg-orange-500 rounded-b-lg cursor-pointer">
+        <button className="bg-orange-500 rounded-b-lg cursor-pointer w-full" onClick={() => handleAddToOrder(article.burgers[0])}>
             <p className="flex justify-center p-4 text-3xl">Suivant</p>
-        </div>
+        </button>
+
+    
       </Link>
     </div>
   </div>

@@ -25,7 +25,7 @@ export default function MenuDrink(){
 
     if (article && article.drinks && article.drinks.length > 0 /* && article.complements[0].ingredients && article.complements[0].ingredients.length > 0*/  ) {
         return (
-            <div id='scrollbar' className="flex flex-wrap items-center bg-gray-200 p-4 justify-center">
+            <div id='scrollbar' className="flex flex-wrap items-center bg-gray-200 p-4 justify-center" key={article.id}>
             {article.drinks.map((drink) => {
                 return(
                     <div key={drink.id} className="w-full  md:w-1/3 max-w-sm m-2 rounded-b-lg bg-white shadow-md mb-10">
@@ -40,11 +40,13 @@ export default function MenuDrink(){
                           <ul>
                             {drink.ingredients.map((ingredient) => {
                                 return (
+                                  <div key={ingredient.id}>
                                     <li className="flex items-center mb-4 gap-2">
-                                    <p className="flex-1">{ingredient.name}</p>
-                                    <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
-                                    <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
-                                  </li>
+                                      <p className="flex-1">{ingredient.name}</p>
+                                      <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                                      <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
+                                    </li>
+                                  </div>
                                 )
                             })}
                           </ul>

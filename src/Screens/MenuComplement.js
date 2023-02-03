@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
+import { useContext } from "react";
+import { StoreContext } from '../Providers/Store'
 
 export default function MenuComplement(){
     let location = useLocation()
     let navigate = useNavigate()
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
+    const { storeMenu, setStoreMenu } = useContext(StoreContext);
+
     console.log(article)
+    console.log(storeMenu)
 
     useEffect(() => {
         if (location && location.state && location.state.article) {
@@ -29,7 +34,7 @@ export default function MenuComplement(){
                     {
                        article.complements.map((complement) => {
                             return (
-                                <div className="flex justify-center mt-20 h-72">
+                                <div className="flex justify-center mt-20 h-72" key={complement.id}>
                                 <div className="m-2 bg-white rounded-b-lg shadow-md shadow-ml min-h-full pt-4">
                                 <div className="flex">
                                 <img className="w-1/2 h-1/2" src={complement.picture} alt="menu item"/>
@@ -39,11 +44,13 @@ export default function MenuComplement(){
                             {
                         complement.ingredients.map((ingredient) => {
                             return (
-                                <li className="flex items-center mb-4">
-                                    <p className="flex-1">{ingredient.name}</p>
-                                    <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
-                                    <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
-                                </li>
+                                <div key={ingredient.id}>
+                                    <li className="flex items-center mb-4">
+                                        <p className="flex-1">{ingredient.name}</p>
+                                        <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
+                                        <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                                    </li>
+                                </div>
                             );
                         })
                         }
