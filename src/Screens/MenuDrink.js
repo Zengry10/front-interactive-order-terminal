@@ -7,7 +7,7 @@ export default function MenuDrink(){
     let navigate = useNavigate()
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
-    console.log(article)
+    // console.log(article)
 
     useEffect(() => {
         if (location && location.state && location.state.article) {

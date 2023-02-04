@@ -10,7 +10,7 @@ export default function MenuBurger(){
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
-    console.log(article)
+    // console.log(article)
 
 
     useEffect(() => {

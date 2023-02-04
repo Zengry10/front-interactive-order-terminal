@@ -11,7 +11,7 @@ export default function MenuComplement(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
 
-    console.log(article)
+    // console.log(article)
     console.log(storeMenu)
 
     useEffect(() => {
@@ -24,6 +24,20 @@ export default function MenuComplement(){
 
     }, [])
 
+
+    const handleAddToOrder = (complement) => {
+        if (storeMenu.length > 0) {
+          setStoreMenu([complement]);
+          console.log(storeMenu)
+        } else {
+          setStoreMenu([]);
+          setStoreMenu([complement]);
+            console.log(storeMenu)
+        //   console.log(complement)
+     
+        }
+      };
+
     if (error) {
         return <div>{error}</div>
     }
@@ -34,7 +48,7 @@ export default function MenuComplement(){
                     {
                        article.complements.map((complement) => {
                             return (
-                                <div className="flex justify-center mt-20 h-72" key={complement.id}>
+                                <div className="flex justify-center mt-20 h-72" key={complement.id}  onClick={() => handleAddToOrder(complement)}>
                                 <div className="m-2 bg-white rounded-b-lg shadow-md shadow-ml min-h-full pt-4">
                                 <div className="flex">
                                 <img className="w-1/2 h-1/2" src={complement.picture} alt="menu item"/>
