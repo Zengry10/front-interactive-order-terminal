@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://localhost:3333";
-const socket = socketIOClient(ENDPOINT);
+// import socketIOClient from "socket.io-client";
+// const ENDPOINT = "http://localhost:3333";
+// const socket = socketIOClient(ENDPOINT);
 
 export default function FetchCommandKitchen(){
     const [commands, setCommandes] = useState('')
+
+    // const io = require("socket.io")(httpServer, {
+    //     cors: {
+    //       origin: "http://localhost:3333",
+    //       methods: ["GET", "POST"],
+    //       allowedHeaders: ['Content-Type', 'Authorization'],
+    //       credentials: true
+    //     }
+    //   });
 
     function fetchMenu(){
         fetch('http://localhost:3333/admin/read/order').then((res) => {
@@ -24,14 +33,14 @@ export default function FetchCommandKitchen(){
         fetchMenu()
     }, [])
 
-    useEffect(() => {
-        socket.on("newOrder", (newCommand) => {
-            setCommandes([...commands, newCommand]);
-        });
-        return () => {
-            socket.off("newOrder");
-        };
-    }, []);
+    // useEffect(() => {
+    //     socket.on("newOrder", (newCommand) => {
+    //         setCommandes([...commands, newCommand]);
+    //     });
+    //     return () => {
+    //         socket.off("newOrder");
+    //     };
+    // }, []);
 
     if (commands) {
         return (

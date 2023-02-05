@@ -24,12 +24,8 @@ export default function MenuComplement(){
 
 
     const handleAddToOrder = (complement) => {
-        if (storeMenu.length > 0) {
-            setStoreMenu([...storeMenu, complement]);
-        } else {
-          setStoreMenu([]);
-          setStoreMenu([complement]);
-        }
+        let newStoreMenu = storeMenu.filter(item => item.type !== complement);
+        setStoreMenu([...newStoreMenu, complement]);
       };
 
     if (error) {

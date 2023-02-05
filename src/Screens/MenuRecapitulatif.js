@@ -10,7 +10,6 @@ export default function Recapitulatif(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu, requestOptions } = useContext(StoreContext);
     let [article, setArticle] = useState(null)
-    console.log(storeMenu)
 
     function SendDataOrder() {
         fetch('http://localhost:3333/admin/create/order', {
@@ -21,7 +20,7 @@ export default function Recapitulatif(){
           },
           body: JSON.stringify({
             name_menu: article.name,
-            items: storeMenu.map(item => item.name),
+            items: uniqueStoreMenu.map(item => item.name),
           }),
         })
           .then((res) => {
@@ -50,6 +49,11 @@ export default function Recapitulatif(){
 
     }, [])
 
+    const uniqueStoreMenu = storeMenu.filter((item, index, self) => {
+      return self.findIndex(t => t.name === item.name) === index;
+    });
+    console.log(uniqueStoreMenu)
+
     if (article){
         return(
             <div className="flex flex-col items-center mt-16">
@@ -62,14 +66,14 @@ export default function Recapitulatif(){
                     </tr>
                 </thead>
                 <tbody>
-                    {storeMenu.map((item, index) => {
-                        return (
-                            <tr key={index} className="bg-white text-gray-800">
-                                <td className="py-4 px-6">{item.name}</td>
-                                <td className="py-4 px-6">1</td>
-                            </tr>
-                        )
-                    })}
+                  {uniqueStoreMenu.map((item, index) => {
+                    return (
+                      <tr key={index} className="bg-white text-gray-800">
+                        <td className="py-4 px-6">{item.name}</td>
+                        <td className="py-4 px-6">1</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
             </table>
             <div className="flex justify-between mt-8 items-center gap-2">

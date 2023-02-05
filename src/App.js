@@ -10,6 +10,7 @@ import MenuComplement from './Screens/MenuComplement'
 import MenuDrink from './Screens/MenuDrink'
 import MenuRecapitulatif from './Screens/MenuRecapitulatif'
 import FetchCommandKitchen from './Screens/FetchCommandKitchen'
+import CreateMenu from './Screens/Admin/CreateMenu'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/menu/drink/:id' element={<MenuDrink/>}></Route>
             <Route path='/menu/recapitulatif/:id' element={<MenuRecapitulatif/>}></Route>
             <Route path='/cuisine/command' element={<FetchCommandKitchen/>}></Route>
+            <Route path='/admin/create/menu' element={<CreateMenu/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>
