@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
+import { useContext } from "react";
+import { StoreContext } from '../Providers/Store'
 
 export default function MenuDrink(){
     let location = useLocation()
     let navigate = useNavigate()
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
-    // console.log(article)
+    const { storeMenu, setStoreMenu } = useContext(StoreContext);
+    console.log(storeMenu)
+    console.log(article)
 
     useEffect(() => {
         if (location && location.state && location.state.article) {
@@ -19,6 +23,15 @@ export default function MenuDrink(){
 
     }, [])
 
+    const handleAddToOrder = (drink) => {
+      if (storeMenu.length > 1) {
+          setStoreMenu([...storeMenu, drink]);
+      } else {
+        setStoreMenu([]);
+        setStoreMenu([drink]);
+      }
+    };
+
     if (error) {
         return <div>{error}</div>
     }
@@ -28,7 +41,7 @@ export default function MenuDrink(){
             <div id='scrollbar' className="flex flex-wrap items-center bg-gray-200 p-4 justify-center" key={article.id}>
             {article.drinks.map((drink) => {
                 return(
-                    <div key={drink.id} className="w-full  md:w-1/3 max-w-sm m-2 rounded-b-lg bg-white shadow-md mb-10">
+                    <div key={drink.id} className="w-full  md:w-1/3 max-w-sm m-2 rounded-b-lg bg-white shadow-md mb-10" onClick={() => handleAddToOrder(drink)}>
 
                       <img className="w-full rounded-b-lg " src={drink.picture} alt="menu item"/>
                       <div className="p-4 flex items-center justify-between">
@@ -53,7 +66,7 @@ export default function MenuDrink(){
                         </div>
                       }
 
-                    <Link to={`/menu/drink/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
+                    <Link to={`/menu/recapitulatif/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
                         <div className="bg-orange-500 rounded-b-lg cursor-pointer">
                             <p className="flex justify-center p-4 text-3xl">Suivant</p>
                         </div>

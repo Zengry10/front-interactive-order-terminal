@@ -9,6 +9,12 @@ export default function StoreProvider(props){
     const [token, setToken] = useState([])
     const [storeMenu, setStoreMenu] = useState([])
 
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ storeMenu })
+  };
+
     return(
             <StoreContext.Provider value={{
                 modalRegister,
@@ -18,7 +24,8 @@ export default function StoreProvider(props){
                 token,
                 setToken,
                 storeMenu,
-                setStoreMenu
+                setStoreMenu,
+                requestOptions
                   }}>
                 {props.children}
             </StoreContext.Provider>

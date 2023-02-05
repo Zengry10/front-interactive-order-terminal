@@ -11,8 +11,6 @@ export default function MenuComplement(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
 
-    // console.log(article)
-    console.log(storeMenu)
 
     useEffect(() => {
         if (location && location.state && location.state.article) {
@@ -27,14 +25,10 @@ export default function MenuComplement(){
 
     const handleAddToOrder = (complement) => {
         if (storeMenu.length > 0) {
-          setStoreMenu([complement]);
-          console.log(storeMenu)
+            setStoreMenu([...storeMenu, complement]);
         } else {
           setStoreMenu([]);
           setStoreMenu([complement]);
-            console.log(storeMenu)
-        //   console.log(complement)
-     
         }
       };
 
