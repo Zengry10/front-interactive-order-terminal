@@ -11,6 +11,7 @@ import MenuDrink from './Screens/MenuDrink'
 import MenuRecapitulatif from './Screens/MenuRecapitulatif'
 import FetchCommandKitchen from './Screens/FetchCommandKitchen'
 import CreateMenu from './Screens/Admin/CreateMenu'
+import Test from './Screens/Admin/Test'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/menu/recapitulatif/:id' element={<MenuRecapitulatif/>}></Route>
             <Route path='/cuisine/command' element={<FetchCommandKitchen/>}></Route>
             <Route path='/admin/create/menu' element={<CreateMenu/>}></Route>
+            <Route path='/test' element={<Test/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>

@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form";
 export default function CreateMenu(){
     const { register, handleSubmit, formState: {errors } } = useForm()
+    const localhost = 'http://localhost:3333/image/Menu/'
+
     
     function SendDataOrder(data) {
+      
+    const formData = new FormData();
+    formData.append("cover_image", data.picture[0]);
+      
       fetch('http://localhost:3333/admin/create/menu', {
         method: 'POST',
         headers: {
@@ -12,7 +18,7 @@ export default function CreateMenu(){
         body: JSON.stringify({
           name: data.name,
           description: data.description,
-          picture : data. picture,
+          picture : formData,
           price: data.price,
         }),
       })
@@ -20,9 +26,10 @@ export default function CreateMenu(){
           res.json().then((json) => {
             if (res.status === 201 || res.status === 200) {
               alert('Donnée envoyée');
+              console.log(data)
             } else {
               alert('Donnée invalide');
-              console.log(data.name);
+              console.log(localhost + data.picture[0].name);
             }
           });
         })
@@ -58,13 +65,25 @@ export default function CreateMenu(){
                 <label className="block text-gray-700 font-bold mb-2" htmlFor="picture">
                   Image du menu
                 </label>
+                
+                <label htmlFor="image">Sélectionnez une image :</label>
+                <input 
+                  type="file" 
+                  id="image" 
+                  name="image"
+                  {...register("picture", { required: true })}
+                
+                />
+
+{/* 
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id=" picture"
                   type="text"
                   {...register("picture", { required: true })}
-                />
+                /> */}
               </div>
+              
               <div className="mb-4">
                 <label className="block text-gray-700 font-bold mb-2" htmlFor="price">
                   Prix du menu
