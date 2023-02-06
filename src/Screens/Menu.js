@@ -25,9 +25,9 @@ export default function Menu(){
         if (articles) {
             return(
                 <div id='scrollbar' className="flex flex-wrap items-center bg-orange-500 p-4 justify-center">
-                {articles.map((article) => {
-                    return(
-                            <div key={article.id} className="w-full  md:w-1/3 max-w-sm m-2 bg-white rounded-lg shadow-md mb-10">
+                    {articles.map((article) => {
+                        return(
+                            <div key={article.id} className=" mt-10 gap-2 p-4 md:w-1/3 max-w-sm m-2 bg-white rounded-lg shadow-md mb-10 hover:shadow-lg hover:scale-105 transition duration-300">
                                 <Link to={`/menu/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
                                     <img className="w-full" src={article.picture} alt="menu item"/>
                                     <div className="p-4 flex items-center justify-between">
@@ -36,10 +36,11 @@ export default function Menu(){
                                     </div>
                                 </Link>
                             </div>
-                    )
-                })}
+                        )
+                    })}
                 </div>
             )
+            
         }
 
 }

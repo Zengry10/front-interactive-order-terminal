@@ -37,7 +37,7 @@ export default function MenuBurger(){
 
     if (article && article !== null && article.burgers &&article.burgers.length > 0 && article.burgers[0].ingredients && article.burgers[0].ingredients.length > 0) {
         return (
-<div className="bg-gray-200 h-screen w-full mb-32 overflow-hidden" key={article.id}>
+<div id='scroll' className="bg-gray-200 h-screen w-full overflow-hidden" key={article.id}>
   <div className="flex justify-center mt-20">
     <div className="w-full md:w-1/3  m-2 bg-white rounded-b-lg shadow-md shadow-ml min-h-full pt-4">
       <div className="flex">

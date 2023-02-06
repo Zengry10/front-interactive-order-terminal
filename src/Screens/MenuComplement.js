@@ -24,17 +24,20 @@ export default function MenuComplement(){
 
 
     const handleAddToOrder = (complement) => {
-        let newStoreMenu = storeMenu.filter(item => item.type !== complement);
-        setStoreMenu([...newStoreMenu, complement]);
-      };
-
+        const maxNumberOfComplements = 2; // Nombre maximum de boissons autorisées
+        if (storeMenu.length < 2) {
+            setStoreMenu([...storeMenu, complement]);
+        } else {
+            alert("Vous ne pouvez pas commander plus de " + maxNumberOfComplements + " compléments.");
+        }
+    };
     if (error) {
         return <div>{error}</div>
     }
 
     if (article && article.complements && article.complements.length > 0 /* && article.complements[0].ingredients && article.complements[0].ingredients.length > 0*/  ) {
         return (
-                <div className=" flex bg-gray-200 justify-center w-full mb-32 overflow-hidden h-screen" key={article.id}>
+                <div className=" flex bg-gray-200 justify-center w-full overflow-hidden h-screen" key={article.id}>
                     {
                        article.complements.map((complement) => {
                             return (

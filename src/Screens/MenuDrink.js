@@ -24,14 +24,13 @@ export default function MenuDrink(){
     }, [])
 
     const handleAddToOrder = (drink) => {
-      if (storeMenu.length > 1) {
+      const maxNumberOfDrinks = 3; // Nombre maximum de boissons autorisées
+      if (storeMenu.length < maxNumberOfDrinks) {
           setStoreMenu([...storeMenu, drink]);
       } else {
-        setStoreMenu([]);
-        setStoreMenu([drink]);
+          alert("Vous ne pouvez pas commander plus de 2 boissons.");
       }
-    };
-
+  };
     if (error) {
         return <div>{error}</div>
     }

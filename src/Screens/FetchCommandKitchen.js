@@ -44,26 +44,28 @@ export default function FetchCommandKitchen(){
 
     if (commands) {
         return (
-<div id='scrollbar' className="overflow-auto h-64">
-                {commands.map((command) => {
-                    return (
-                        <div key={command.id} className="bg-white p-4 shadow-md rounded-lg m-4">
-                            <div className="flex items-center" key={command.id}>
-                                <div className="flex-1">
-                                    <h3 className="font-bold text-xl">{command.name_menu}</h3>
-                                    {
-                                        command.items.map((item) => {
-                                            return (
-                                                <p className="text-sm text-gray-600 flex">- {item}</p>
-                                            )
-                                        })
-                                    }             
-                                </div>
-                            </div>
+            <div className="overflow-auto h-full">
+              {commands.map((command) => {
+                const date = new Date(command.updated_at);
+                const time = date.toLocaleTimeString();
+                return (
+                  <div key={command.id} className="bg-white p-4 shadow-md rounded-lg m-4">
+                    <div className="flex items-center">
+                      <div className="flex-1">
+                        <h1 className="font-bold text-xl underline">Commande #{command.id}</h1>
+                        <h4 className="font-bold">{command.name_menu}</h4>
+                        <div className="mt-2">
+                          {command.items.map((item) => (
+                            <p className="text-sm text-gray-600 flex">- {item}</p>
+                          ))}
                         </div>
-                    );
-                })}
+                        <p className="mt-2 font-medium text-gray-600">Heure de la commande : {time}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-        );
+          );
     }
 }
