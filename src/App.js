@@ -11,7 +11,7 @@ import MenuDrink from './Screens/MenuDrink'
 import MenuRecapitulatif from './Screens/MenuRecapitulatif'
 import FetchCommandKitchen from './Screens/FetchCommandKitchen'
 import CreateMenu from './Screens/Admin/CreateMenu'
-import Test from './Screens/Admin/Test'
+import PictureMenu from './Screens/Admin/PictureMenu'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <BrowserRouter>
           <Nav/>
           <Routes>
-            <Route path='/' element={<Navigate to='/client/menu'/>}></Route>
+            {/* <Route path='/' element={<Navigate to='/client/menu'/>}></Route> */}
             <Route path='/client/menu/' element={<Menu/>}></Route>
             <Route path='/client/menu/:id' element={<MenuBurger/>}></Route>
             <Route path='/client/menu/component/:id' element={<MenuComplement/>}></Route>
@@ -28,7 +28,7 @@ function App() {
             <Route path='/client/menu/recapitulatif/:id' element={<MenuRecapitulatif/>}></Route>
             <Route path='/cuisine/command' element={<FetchCommandKitchen/>}></Route>
             <Route path='/admin/create/menu' element={<CreateMenu/>}></Route>
-            <Route path='/admin/create/pictureMenu' element={<Test/>}></Route>
+            <Route path='/admin/create/pictureMenu' element={<PictureMenu/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>

@@ -10,10 +10,9 @@ export default function StoreProvider(props){
     const [storeMenu, setStoreMenu] = useState([])
 
     const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ storeMenu })
-  };
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+      };
 
     return(
             <StoreContext.Provider value={{

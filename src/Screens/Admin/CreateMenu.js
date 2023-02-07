@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import Test from "./Test";
+import PictureMenu from "./PictureMenu";
 export default function CreateMenu(){
   let navigate = useNavigate()
     const { register, handleSubmit, formState: {errors } } = useForm()
@@ -10,7 +10,7 @@ export default function CreateMenu(){
     
     function SendDataOrder(data) {
       
-      fetch('http://localhost:3333/admin/create/menu', {
+      fetch('http://localhost:3333/menu', {
         method: 'POST',
         headers: {
           'access-control-allow-origin': '*',
@@ -42,7 +42,7 @@ export default function CreateMenu(){
         return(
           <div className="flex flex-col items-center mt-16">
             <h1 className="text-2xl font-bold mb-8">Création d'un menu</h1>
-            <Link to={'/test'}><p  className=" rounded-lg p-4 bg-orange-500">Avant de crée un menu, <span className="underline">cliquer ici</span> pour enregistrer la photo de votre futur menu. Une fois cette étape compléter vous pourrez crée votre nouveau menu</p></Link>
+            <Link to={'/admin/create/pictureMenu'}><p  className=" rounded-lg p-4 bg-orange-500">Avant de crée un menu, <span className="underline">cliquer ici</span> pour enregistrer la photo de votre futur menu. Une fois cette étape compléter vous pourrez crée votre nouveau menu</p></Link>
             <form className="w-full max-w-sm" onSubmit={handleSubmit(SendDataOrder)}>
               <div className="mb-4">
                 <label className="block text-gray-700 font-bold mb-2" htmlFor="name">

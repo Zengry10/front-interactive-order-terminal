@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-export default function Test(){
+export default function PictureMenu(){
   const { register, handleSubmit, formState: {errors } } = useForm()
   let navigate = useNavigate()
     function SendDataOrder(data) {

@@ -2,8 +2,10 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import { StoreContext } from '../Providers/Store'
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom";
 export default function Login(closeModalLogin){
-    const { setModalLogin, setToken } = useContext(StoreContext);
+    const navigate = useNavigate();
+    const { setModalLogin, setToken, token } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
     function Connect(data){
         fetch('http://localhost:3333/login',{
@@ -23,6 +25,8 @@ export default function Login(closeModalLogin){
                         setModalLogin(false)
                         localStorage.setItem('token', json.token.token)
                         setToken(json.token.token)
+                        console.log(token)
+                        navigate('/client/menu')
                     }
                     else{
                         alert('Donnée invalide')

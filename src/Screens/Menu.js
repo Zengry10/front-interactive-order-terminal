@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
-
+import { StoreContext } from '../Providers/Store'
+import { useContext } from "react"
 
 
 export default function Menu(){
  const [articles, setArticles] = useState('')
+ const { requestOptions } = useContext(StoreContext);
+ console.log(requestOptions)
+
 
 
     function fetchMenu(){
-        fetch('http://localhost:3333/menu').then((res) => {
+        fetch('http://localhost:3333/menu', requestOptions).then((res) => {
             res.json().then((json) =>{
                    console.log(json)
                    setArticles(json.data)
