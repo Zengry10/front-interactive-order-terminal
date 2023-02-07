@@ -8,7 +8,7 @@ export default function Menu(){
 
 
     function fetchMenu(){
-        fetch('http://localhost:3333/admin/read/menu').then((res) => {
+        fetch('http://localhost:3333/menu').then((res) => {
             res.json().then((json) =>{
                    console.log(json)
                    setArticles(json.data)
@@ -20,7 +20,7 @@ export default function Menu(){
         fetchMenu()
     }, [])
 
-
+ 
 
         if (articles) {
             return(
@@ -28,7 +28,7 @@ export default function Menu(){
                     {articles.map((article) => {
                         return(
                             <div key={article.id} className=" mt-10 gap-2 p-4 md:w-1/3 max-w-sm m-2 bg-white rounded-lg shadow-md mb-10 hover:shadow-lg hover:scale-105 transition duration-300">
-                                <Link to={`/menu/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
+                                <Link to={`/client/menu/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
                                     <img className="w-full" src={article.picture} alt="menu item"/>
                                     <div className="p-4 flex items-center justify-between">
                                         <h3 className="text-xl font-bold">{article.name}</h3>

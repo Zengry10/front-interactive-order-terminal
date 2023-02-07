@@ -12,7 +12,7 @@ export default function Recapitulatif(){
     let [article, setArticle] = useState(null)
 
     function SendDataOrder() {
-        fetch('http://localhost:3333/admin/create/order', {
+        fetch('http://localhost:3333/order', {
           method: 'POST',
           headers: {
             'access-control-allow-origin': '*',

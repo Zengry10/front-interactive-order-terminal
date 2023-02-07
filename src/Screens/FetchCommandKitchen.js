@@ -16,7 +16,7 @@ export default function FetchCommandKitchen(){
     //   });
 
     function fetchMenu(){
-        fetch('http://localhost:3333/admin/read/order').then((res) => {
+        fetch('http://localhost:3333/order').then((res) => {
             res.json().then((json) =>{
                    console.log(json)
                    setCommandes(json.map((command) => {
@@ -56,7 +56,7 @@ export default function FetchCommandKitchen(){
                         <h4 className="font-bold">{command.name_menu}</h4>
                         <div className="mt-2">
                           {command.items.map((item) => (
-                            <p className="text-sm text-gray-600 flex">- {item}</p>
+                              <p className="text-sm text-gray-600 flex">- {item}</p>
                           ))}
                         </div>
                         <p className="mt-2 font-medium text-gray-600">Heure de la commande : {time}</p>

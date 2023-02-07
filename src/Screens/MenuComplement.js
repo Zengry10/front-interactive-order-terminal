@@ -64,7 +64,7 @@ export default function MenuComplement(){
                         </ul>
                         </div>
                         </div>
-                        <Link to={`/menu/drink/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
+                        <Link to={`/client/menu/drink/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
                             <div className="bg-orange-500 rounded-b-lg cursor-pointer">
                                 <p className="flex justify-center p-4 text-3xl">Suivant</p>
                             </div>

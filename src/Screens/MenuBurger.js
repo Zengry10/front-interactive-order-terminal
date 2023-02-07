@@ -61,7 +61,7 @@ export default function MenuBurger(){
           </ul>
         </div>
       </div>
-      <Link to={`/menu/component/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
+      <Link to={`/client/menu/component/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
         <button className="bg-orange-500 rounded-b-lg cursor-pointer w-full" onClick={() => handleAddToOrder(article.burgers[0])}>
             <p className="flex justify-center p-4 text-3xl">Suivant</p>
         </button>
