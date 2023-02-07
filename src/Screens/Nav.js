@@ -18,4 +18,4 @@ const { modalRegister, setModalRegister, modalLogin, setModalLogin } = useContex
             {modalLogin && <Login closeModalLogin={modalLogin}/>}
         </div>
     )
-}
+} 
