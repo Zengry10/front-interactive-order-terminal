@@ -28,7 +28,7 @@ export default function CreateMenu(){
             if (res.status === 201 || res.status === 200) {
               alert('Donnée envoyée');
               console.log(data)
-              navigate('/menu')
+              navigate('/client/menu')
             } else {
               alert('Donnée invalide');
               console.log(localhost + data.picture[0].name);
