@@ -6,17 +6,18 @@ import { useContext } from "react"
 
 export default function Menu(){
  const [articles, setArticles] = useState('')
- const { requestOptions } = useContext(StoreContext);
- console.log(requestOptions)
+ const { role, requestOptions } = useContext(StoreContext);
+//  console.log(requestOptions)
+console.log(role)
 
 
 
     function fetchMenu(){
         fetch('http://localhost:3333/menu', requestOptions).then((res) => {
             res.json().then((json) =>{
-                   console.log(json)
+                //    console.log(json)
                    setArticles(json.data)
-                   console.log(articles)
+                //    console.log(articles)
                 })
             }) 
     }

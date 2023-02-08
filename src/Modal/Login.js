@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
 export default function Login(closeModalLogin){
     const navigate = useNavigate();
-    const { setModalLogin, setToken, token } = useContext(StoreContext);
+    const { setModalLogin, setToken, token, role, setRole } = useContext(StoreContext);
     const { register, handleSubmit, formState: {errors } } = useForm()
     function Connect(data){
         fetch('http://localhost:3333/login',{
@@ -21,12 +21,16 @@ export default function Login(closeModalLogin){
         }).then((res) => {
             res.json().then((json) =>{
                     if (res.ok){
+                        setRole(json.user.role)
+                        console.log(json.user.role)
+                        console.log(role)
                         alert('Vous etes connectez')
                         setModalLogin(false)
                         localStorage.setItem('token', json.token.token)
                         setToken(json.token.token)
                         console.log(token)
                         navigate('/client/menu')
+
                     }
                     else{
                         alert('Donnée invalide')

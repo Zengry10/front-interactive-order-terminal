@@ -2,9 +2,15 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import PictureMenu from "./PictureMenu";
+import { useContext } from "react";
+import { StoreContext } from "../../Providers/Store";
+
 export default function CreateMenu(){
   let navigate = useNavigate()
     const { register, handleSubmit, formState: {errors } } = useForm()
+    const { role, setRole } = useContext(StoreContext);
+    console.log(role)
+
     const localhost = 'http://localhost:3333/image/Menu/'
 
     
@@ -35,9 +41,7 @@ export default function CreateMenu(){
             }
           });
         })
-
     }
-
 
         return(
           <div className="flex flex-col items-center mt-16">
@@ -104,7 +108,5 @@ export default function CreateMenu(){
             </form>
           </div>
         )
-
-
     }
     

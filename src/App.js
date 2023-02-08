@@ -26,7 +26,9 @@ function App() {
             <Route path='/client/menu/component/:id' element={<MenuComplement/>}></Route>
             <Route path='/client/menu/drink/:id' element={<MenuDrink/>}></Route>
             <Route path='/client/menu/recapitulatif/:id' element={<MenuRecapitulatif/>}></Route>
+
             <Route path='/cuisine/command' element={<FetchCommandKitchen/>}></Route>
+            
             <Route path='/admin/create/menu' element={<CreateMenu/>}></Route>
             <Route path='/admin/create/pictureMenu' element={<PictureMenu/>}></Route>
           </Routes>

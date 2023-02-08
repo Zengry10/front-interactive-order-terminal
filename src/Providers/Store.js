@@ -8,6 +8,8 @@ export default function StoreProvider(props){
     const [modalLogin, setModalLogin] = useState(false)
     const [token, setToken] = useState([])
     const [storeMenu, setStoreMenu] = useState([])
+    const [role, setRole] = useState([])
+
 
     const requestOptions = {
       method: 'GET',
@@ -24,7 +26,9 @@ export default function StoreProvider(props){
                 setToken,
                 storeMenu,
                 setStoreMenu,
-                requestOptions
+                requestOptions,
+                role,
+                setRole
                   }}>
                 {props.children}
             </StoreContext.Provider>

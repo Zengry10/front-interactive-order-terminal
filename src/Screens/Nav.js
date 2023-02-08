@@ -1,13 +1,48 @@
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from '../Providers/Store'
-import { useContext } from "react"
 import Register from '../Modal/Register'
 import Login from '../Modal/Login'
+import { useContext } from "react"
 
 export default function Nav(){
-    const { modalRegister, setModalRegister, modalLogin, setModalLogin } = useContext(StoreContext);
-    const token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
+    // const [role, setRole] = useState(null);
+    // const [isRoleLoaded, setIsRoleLoaded] = useState(false);
+    const { modalRegister, setModalRegister, modalLogin, setModalLogin, requestOptions } = useContext(StoreContext);
+    const token = localStorage.getItem('token');
+
+    // function SendDataOrder() {
+    //     fetch('http://localhost:3333/me', requestOptions)
+    //       .then((res) => {
+    //         res.json().then((json) => {
+    //             setRole(json.role);
+    //             // setIsRoleLoaded(true);
+    //             console.log(role);
+    //         });
+    //       })
+    //   }
+      
+    // useEffect(() => {
+    //     SendDataOrder();
+    // }, []);
+
+
+    // useEffect(() => {
+    //     if (isRoleLoaded) {
+    //         if (role === "cuisine" && window.location.pathname.startsWith("/admin")) {
+    //             navigate("/client/menu");
+    //         } else if (role !== "admin" && (window.location.pathname.startsWith("/admin") || window.location.pathname.startsWith("/cuisine"))) {
+    //             navigate("/client/menu");
+    //         }
+    //     }
+    // }, [role, isRoleLoaded, navigate]);
+    
+    
+    
+    
+    
     return(
         <nav className="flex items-center justify-between bg-orange-500 p-4  mb-px">
             <div className="flex">
