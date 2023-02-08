@@ -27,6 +27,7 @@ export default function Login(closeModalLogin){
                         alert('Vous etes connectez')
                         setModalLogin(false)
                         localStorage.setItem('token', json.token.token)
+                        localStorage.setItem('role', json.user.role)
                         setToken(json.token.token)
                         console.log(token)
                         navigate('/client/menu')

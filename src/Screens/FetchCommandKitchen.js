@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
-// import socketIOClient from "socket.io-client";
-// const ENDPOINT = "http://localhost:3333";
-// const socket = socketIOClient(ENDPOINT);
+import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from '../Providers/Store'
+import { useContext } from 'react';
 
 export default function FetchCommandKitchen(){
+    const navigate = useNavigate();
     const [commands, setCommandes] = useState('')
+    const { role, setRole } = useContext(StoreContext);
 
-    // const io = require("socket.io")(httpServer, {
-    //     cors: {
-    //       origin: "http://localhost:3333",
-    //       methods: ["GET", "POST"],
-    //       allowedHeaders: ['Content-Type', 'Authorization'],
-    //       credentials: true
-    //     }
-    //   });
+
+
+    function Role(){
+      if(role !== 'admin' && role !== 'cuisine'){
+        navigate('/client/menu')
+      }
+    }
+
+    useEffect(() => {
+      Role()
+    }, [])
+
 
     function fetchMenu(){
         fetch('http://localhost:3333/order').then((res) => {
@@ -25,7 +31,6 @@ export default function FetchCommandKitchen(){
                         const items = itemsArray.map((item) => item.split("[")[0]);
                         return { ...command, items };
                    }))
-                   console.log(commands)
                 })
             }) 
     }
@@ -33,14 +38,6 @@ export default function FetchCommandKitchen(){
         fetchMenu()
     }, [])
 
-    // useEffect(() => {
-    //     socket.on("newOrder", (newCommand) => {
-    //         setCommandes([...commands, newCommand]);
-    //     });
-    //     return () => {
-    //         socket.off("newOrder");
-    //     };
-    // }, []);
 
     if (commands) {
         return (

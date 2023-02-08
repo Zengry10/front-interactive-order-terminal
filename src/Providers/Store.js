@@ -8,7 +8,8 @@ export default function StoreProvider(props){
     const [modalLogin, setModalLogin] = useState(false)
     const [token, setToken] = useState([])
     const [storeMenu, setStoreMenu] = useState([])
-    const [role, setRole] = useState([])
+    const [role, setRole] = useState(localStorage.getItem('role') || [])
+
 
 
     const requestOptions = {

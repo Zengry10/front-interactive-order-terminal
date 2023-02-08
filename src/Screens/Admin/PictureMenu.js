@@ -15,7 +15,7 @@ export default function PictureMenu(){
             if (res.status === 201 || res.status === 200) {
               alert('Merci, vous pouvez désormais crée votre menu en y ajoutant la photo du menu que vous venez de choisir.');
               console.log(data)
-              navigate('/admin/create/menu')
+              navigate('/admin/menu/create')
             } else {
               alert(`Donnée non envoyée, status de la réponse : ${res.status}`);
             }

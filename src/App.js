@@ -28,8 +28,8 @@ function App() {
             <Route path='/client/menu/recapitulatif/:id' element={<MenuRecapitulatif/>}></Route>
 
             <Route path='/cuisine/command' element={<FetchCommandKitchen/>}></Route>
-            
-            <Route path='/admin/create/menu' element={<CreateMenu/>}></Route>
+
+            <Route path='/admin/menu/create' element={<CreateMenu/>}></Route>
             <Route path='/admin/create/pictureMenu' element={<PictureMenu/>}></Route>
           </Routes>
         </BrowserRouter>

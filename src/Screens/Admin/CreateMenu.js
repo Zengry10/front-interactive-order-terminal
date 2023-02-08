@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import PictureMenu from "./PictureMenu";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { StoreContext } from "../../Providers/Store";
 
 export default function CreateMenu(){
@@ -10,8 +10,17 @@ export default function CreateMenu(){
     const { register, handleSubmit, formState: {errors } } = useForm()
     const { role, setRole } = useContext(StoreContext);
     console.log(role)
-
     const localhost = 'http://localhost:3333/image/Menu/'
+
+    function Role(){
+      if(role !== 'admin'){
+        navigate('/client/menu')
+      }
+    }
+
+    useEffect(() => {
+      Role()
+    }, [])
 
     
     function SendDataOrder(data) {
