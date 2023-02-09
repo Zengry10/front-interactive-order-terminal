@@ -11,7 +11,12 @@ export default function MenuBurger(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
     // console.log(article)
+    console.log(storeMenu)
 
+    const handleRemoveIngredient = (ingredient) => {
+      const updatedIngredients = storeMenu[0].ingredients.filter(i => i !== ingredient)
+      setStoreMenu([{...storeMenu[0], ingredients: updatedIngredients}])
+    }
 
     useEffect(() => {
       if (location && location.state && location.state.article) {
@@ -51,7 +56,7 @@ export default function MenuBurger(){
                   <div key={ingredient.id}>
                   <li className="flex items-center mb-4 gap-2">
                     <p className="flex-1">{ingredient.name}</p>
-                    <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => handleRemoveIngredient(ingredient)}>-</button>
                     <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                   </li>
                   </div>
@@ -66,7 +71,6 @@ export default function MenuBurger(){
             <p className="flex justify-center p-4 text-3xl">Suivant</p>
         </button>
 
-    
       </Link>
     </div>
   </div>
