@@ -10,6 +10,7 @@ export default function MenuComplement(){
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
+    let [textRemoveIngredient, setTextRemoveIngredient] = useState("")
 
 
     useEffect(() => {
@@ -21,6 +22,13 @@ export default function MenuComplement(){
         }
 
     }, [])
+
+    const removeIngredient = (ingredient) => {
+        const updatedIngredients = article.burgers[0].ingredients.filter(i => i !== ingredient);
+        setStoreMenu([{...article.burgers[0], ingredients: updatedIngredients}]);
+        setTextRemoveIngredient(`Vous venez d'enlever l'ingrédient : ${ingredient.name}`);
+    };
+
 
 
     const handleAddToOrder = (complement) => {
@@ -55,25 +63,31 @@ export default function MenuComplement(){
                                     <li className="flex items-center mb-4">
                                         <p className="flex-1">{ingredient.name}</p>
                                         <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
-                                        <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                                        <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => removeIngredient(ingredient)}>-</button>
                                     </li>
                                 </div>
                             );
                         })
                         }
+                        
                         </ul>
                         </div>
                         </div>
+                        
                         <Link to={`/client/menu/drink/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
                             <div className="bg-orange-500 rounded-b-lg cursor-pointer">
                                 <p className="flex justify-center p-4 text-3xl">Suivant</p>
                             </div>
                         </Link>
+
                     </div>
                     </div>
                         );
-                        })
+                    }) 
                     }
+                                            <div className="mt-4 text-center text-sm text-red-500">
+                            {textRemoveIngredient}
+                        </div>  
                 </div>
         )
     }

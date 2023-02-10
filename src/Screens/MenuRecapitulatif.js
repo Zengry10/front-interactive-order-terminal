@@ -10,6 +10,7 @@ export default function Recapitulatif(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu, requestOptions } = useContext(StoreContext);
     let [article, setArticle] = useState(null)
+    console.log(article)
 
     function SendDataOrder() {
         fetch('http://localhost:3333/order', {
@@ -27,7 +28,7 @@ export default function Recapitulatif(){
             res.json().then((json) => {
               if (res.ok) {
                 alert('Donnée envoyée')
-                navigate('/client/menu')
+                // navigate('/client/menu')
               } else {
                 alert('Donnée invalide');
               }
@@ -52,7 +53,7 @@ export default function Recapitulatif(){
     const uniqueStoreMenu = storeMenu.filter((item, index, self) => {
       return self.findIndex(t => t.name === item.name) === index;
     });
-    console.log(uniqueStoreMenu)
+    // console.log(uniqueStoreMenu)
 
     if (article){
         return(
@@ -82,7 +83,7 @@ export default function Recapitulatif(){
                     <p className="text-xl font-bold flex flex-col justify-center items-center">Prix Total: <span>{article.price}€</span></p>
                 </div>
             </div>
-                <button className="mt-4 bg-orange-500 text-white py-4 px-8 font-bold rounded-full text-xl" onClick={() => SendDataOrder()}>Commander</button>    
+            <Link to={`/client/panier/${article.id}`} className="" key={article.id} state={{ article: article }}>  <button className="mt-4 bg-orange-500 text-white py-4 px-8 font-bold  text-xl rounded-full" onClick={() => SendDataOrder()}>  Ajouter au panier</button></Link>
             </div>
         )
     }

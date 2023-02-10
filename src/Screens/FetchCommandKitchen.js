@@ -16,6 +16,10 @@ export default function FetchCommandKitchen(){
       }
     }
 
+    function handleDelete(id) {
+      setCommandes(commands.filter((command) => command.id !== id));
+    }
+
     useEffect(() => {
       Role()
     }, [])
@@ -59,6 +63,8 @@ export default function FetchCommandKitchen(){
                         <p className="mt-2 font-medium text-gray-600">Heure de la commande : {time}</p>
                       </div>
                     </div>
+                    <button className='mt-10 p-4 rounded-lg bg-[#d64122]' onClick={() => handleDelete(command.id)}>Supprimer</button>
+
                   </div>
                 );
               })}

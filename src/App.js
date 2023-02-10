@@ -12,6 +12,7 @@ import MenuRecapitulatif from './Screens/MenuRecapitulatif'
 import FetchCommandKitchen from './Screens/FetchCommandKitchen'
 import CreateMenu from './Screens/Admin/CreateMenu'
 import PictureMenu from './Screens/Admin/PictureMenu'
+import Panier from './Screens/Panier'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
 
             <Route path='/admin/menu/create' element={<CreateMenu/>}></Route>
             <Route path='/admin/create/pictureMenu' element={<PictureMenu/>}></Route>
+            <Route path="/client/panier/:id" element={<Panier/>}></Route>
           </Routes>
         </BrowserRouter>
       </Store>
