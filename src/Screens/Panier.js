@@ -8,7 +8,7 @@ import { json, useLocation, useNavigate } from 'react-router-dom';
 export default function Panier(){
     const {  } = useContext(StoreContext);
     let location = useLocation()
-    const [commands, setCommandes] = useState('')
+    const [commands, setCommands] = useState('')
     const [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
     const [lengthJson, setLengthJson] = useState(null)
@@ -20,6 +20,7 @@ export default function Panier(){
     const uniqueStoreMenu = storeMenu.filter((item, index, self) => {
       return self.findIndex(t => t.name === item.name) === index;
     });
+    console.log(storeMenu.length)
 
     function SendDataOrder() {
       fetch('http://localhost:3333/order', {
@@ -47,13 +48,17 @@ export default function Panier(){
           console.error(error);
         });
     }
+
+    const deleteCommand = (id) => {
+      setCommands(commands.filter((command) => command.id !== id));
+    };
     
     function fetchMenu(){
         fetch('http://localhost:3333/order').then((res) => {
             res.json().then((json) =>{
                 console.log(json)
                 setLengthJson(json.length)
-                   setCommandes(json.map((command) => {
+                   setCommands(json.map((command) => {
                         const itemsString = command.items;
                         const itemsArray = itemsString.slice(2, -2).split("\",\"");
                         const items = itemsArray.map((item) => item.split("[")[0]);
@@ -91,12 +96,15 @@ export default function Panier(){
               </div>
             </div>
 
-          {commands.map((command) => {
+            {commands.map((command) => {
             return (
               <div
                 key={command.id}
-                className="bg-white w-full max-w-sm m-auto p-6 shadow-md rounded-lg m-4"
+                className="bg-white w-full max-w-sm m-auto p-6 shadow-md rounded-lg m-4 relative"
               >
+                  <button className="text-red-500 hover:text-red-700 absolute top-0 right-0 p-3 font-bold" onClick={() => deleteCommand(command.id)}>
+                    &times;
+                  </button>
                 <div className="flex items-center mb-6">
                   <div className="flex-1">
                     <h4 className="font-bold">
@@ -124,18 +132,22 @@ export default function Panier(){
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             );
           })}
+
           <div className="flex justify-center">
             <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onClick={() => SendDataOrder()}>
               Commander
             </button>
           </div>
         </div>
-    )}
-    
+      );
+
+      }
+
     
 
 }

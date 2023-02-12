@@ -62,7 +62,7 @@ export default function Nav(){
                                     <Link to='/client/menu' className="text-white font-bold mr-4">Petite faim</Link>
                                     <Link to='/cuisine/command' className="text-white font-bold mr-4">Commande cuisine</Link>
                                     <Link to='/admin/menu/create' className="text-white font-bold mr-4">Create Menu</Link>
-                                    <Link to='/client/panier' className="text-white font-bold mr-4">Panier</Link>
+                                    <Link to='/client/panier/:id' className="text-white font-bold mr-4">Panier</Link>
                                 </div>
                                 <button className="bg-transparent border border-white hover:border-gray-200 text-white hover:text-gray-500 py-2 px-4 rounded mr-4 flex-end"
                                     onClick={() => {
@@ -76,14 +76,27 @@ export default function Nav(){
                         </>
                     ) : role === 'cuisine' ? (
                         <>
-                            <Link to='/client/menu' className="text-white font-bold mr-4">Nos Menus</Link>
-                            <Link to='/client/menu' className="text-white font-bold mr-4">Petite faim</Link>
-                            <Link to='/cuisine/command' className="text-white font-bold mr-4">Commande Cuisine</Link>
+                            <div className='flex justify-between items-center'>
+                                <div className=' '>
+                                    <Link to='/cuisine/command' className="text-white font-bold mr-4">Commande cuisine</Link>
+                                </div>
+                                <button className="bg-transparent border border-white hover:border-gray-200 text-white hover:text-gray-500 py-2 px-4 rounded mr-4 flex-end"
+                                    onClick={() => {
+                                        localStorage.removeItem('token');
+                                        setRole(null);
+                                        navigate('/');
+                                    }}>
+                                        Déconnexion
+                                </button>
+                            </div>
                         </>
                     ) : (
                         <>
-                            <Link to='/client/menu' className="text-white font-bold mr-4">Nos Menus</Link>
-                            <Link to='/client/menu' className="text-white font-bold">Petite faim</Link>
+                            <div className='flex '>
+                                <Link to='/client/menu' className="text-white font-bold mr-4">Nos Menus</Link>
+                                <Link to='/client/menu' className="text-white font-bold mr-4">Petite faim</Link>
+                                <Link to='/client/panier/:id' className="text-white font-bold mr-4">Panier</Link>
+                            </div>
                         </>
                     )
                 ) : (
