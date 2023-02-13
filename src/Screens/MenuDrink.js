@@ -9,9 +9,18 @@ export default function MenuDrink(){
     let navigate = useNavigate()
     let [article, setArticle] = useState(null)
     let [error, setError] = useState(null)
+    const [isRemoved, setIsRemoved] = useState(false);
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
+    let [textRemoveIngredient, setTextRemoveIngredient] = useState("")
+
     console.log(storeMenu)
     console.log(article)
+
+    const removeIngredient = (ingredient) => {
+      const updatedIngredients = article.burgers[0].ingredients.filter(i => i !== ingredient);
+      setStoreMenu([{...article.burgers[0], ingredients: updatedIngredients}]);
+      setTextRemoveIngredient(`Vous venez d'enlever l'ingrédient : ${ingredient.name}`);
+  };
 
     useEffect(() => {
         if (location && location.state && location.state.article) {
@@ -55,7 +64,15 @@ export default function MenuDrink(){
                                   <div key={ingredient.id}>
                                     <li className="flex items-center mb-4 gap-2">
                                       <p className="flex-1">{ingredient.name}</p>
-                                      <button className="bg-red-500 text-white px-4 py-2 rounded-full">-</button>
+                                      <button 
+                                        className={`bg-red-500 text-white px-4 py-2 rounded-full ${isRemoved ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                        onClick={() => {
+                                          removeIngredient(ingredient);
+                                          setIsRemoved(true);
+                                        }}
+                                      >
+                                        -
+                        </button>    
                                       <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                                     </li>
                                   </div>

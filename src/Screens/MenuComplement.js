@@ -11,6 +11,8 @@ export default function MenuComplement(){
     let [error, setError] = useState(null)
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
     let [textRemoveIngredient, setTextRemoveIngredient] = useState("")
+    const [isRemoved, setIsRemoved] = useState(false);
+
 
 
     useEffect(() => {
@@ -62,8 +64,15 @@ export default function MenuComplement(){
                                 <div key={ingredient.id}>
                                     <li className="flex items-center mb-4">
                                         <p className="flex-1">{ingredient.name}</p>
-                                        <button className="bg-red-500 text-white px-4 py-2 rounded-full" onClick={() => removeIngredient(ingredient)}>-</button>
-                                        <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
+                                        <button 
+                      className={`bg-red-500 text-white px-4 py-2 rounded-full ${isRemoved ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      onClick={() => {
+                        removeIngredient(ingredient);
+                        setIsRemoved(true);
+                      }}
+                    >
+                      -
+                    </button>                                        <button className="bg-green-500 text-white px-4 py-2 rounded-full mr-2">+</button>
                                     </li>
                                 </div>
                             );

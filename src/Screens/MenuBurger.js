@@ -71,7 +71,6 @@ export default function MenuBurger(){
                         removeIngredient(ingredient);
                         setIsRemoved(true);
                       }}
-                      disabled={isRemoved}
                     >
                       -
                     </button>
@@ -88,13 +87,11 @@ export default function MenuBurger(){
       <div className="mt-4 text-center text-sm text-red-500">
         {textRemoveIngredient}
       </div>
-
-      <Link to={`/client/menu/component/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
-        <button className="bg-orange-500 rounded-b-lg cursor-pointer w-full" onClick={() => handleAddToOrder(article.burgers[0])}>
-            <p className="flex justify-center p-4 text-3xl">Suivant</p>
-        </button>
-
-      </Link>
+        <Link to={`/client/menu/component/${article.id}`} className="w-5" key={article.id} state={{ article: article }}>
+          <button className="bg-orange-500 rounded-b-lg cursor-pointer w-full" onClick={() => handleAddToOrder(article.burgers[0])}>
+              <p className="flex justify-center p-4 text-3xl">Suivant</p>
+          </button>
+        </Link>
     </div>
   </div>
 </div>
