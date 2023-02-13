@@ -3,6 +3,7 @@ import React from "react";
 import { StoreContext } from '../Providers/Store'
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
+
 export default function Login(closeModalLogin){
     const navigate = useNavigate();
     const { setModalLogin, setToken, token, role, setRole } = useContext(StoreContext);
@@ -24,7 +25,6 @@ export default function Login(closeModalLogin){
                         setRole(json.user.role)
                         console.log(json.user.role)
                         console.log(role)
-                        alert('Vous etes connectez')
                         setModalLogin(false)
                         localStorage.setItem('token', json.token.token)
                         localStorage.setItem('role', json.user.role)
@@ -92,7 +92,7 @@ export default function Login(closeModalLogin){
                         <button 
                             type="submit" 
                             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Crée votre compte
+                            Se connecter
                         </button>
                         <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                             Pas encore de compte ? &nbsp; <a href="#" className="text-blue-700 hover:underline dark:text-blue-500">S'inscrire</a>

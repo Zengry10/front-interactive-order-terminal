@@ -7,6 +7,7 @@ export default function FetchCommandKitchen(){
     const navigate = useNavigate();
     const [commands, setCommandes] = useState('')
     const { role, setRole } = useContext(StoreContext);
+    const [timers, setTimers] = useState([]);
 
 
 

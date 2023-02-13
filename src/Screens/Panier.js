@@ -37,8 +37,9 @@ export default function Panier(){
         .then((res) => {
           res.json().then((json) => {
             if (res.ok) {
-              alert('Donnée envoyée')
-              // navigate('/client/menu')
+              console.log(json)
+              alert('Votre commande a bien été prise en compte, votre numéro de commande est le : #' + json.id + '.')
+              navigate('/client/menu')
             } else {
               alert('Donnée invalide');
             }
@@ -48,6 +49,8 @@ export default function Panier(){
           console.error(error);
         });
     }
+
+
 
     const deleteCommand = (id) => {
       setCommands(commands.filter((command) => command.id !== id));

@@ -27,7 +27,6 @@ export default function Recapitulatif(){
           .then((res) => {
             res.json().then((json) => {
               if (res.ok) {
-                alert('Donnée envoyée')
                 // navigate('/client/menu')
               } else {
                 alert('Donnée invalide');

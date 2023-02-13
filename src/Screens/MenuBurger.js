@@ -14,7 +14,7 @@ export default function MenuBurger(){
     const [isRemoved, setIsRemoved] = useState(false);
 
     console.log(article)
-    console.log(storeMenu)
+    // console.log(storeMenu)
 
     // const removeIngredient = (ingredient) => {
     //   const updatedIngredients = article.burgers[0].ingredients.filter(i => i !== ingredient)

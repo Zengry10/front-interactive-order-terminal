@@ -59,9 +59,11 @@ export default function Nav(){
                             <div className='flex justify-between items-center'>
                                 <div className=' '>
                                     <Link to='/client/menu' className="text-white font-bold mr-4">Nos Menus</Link>
-                                    <Link to='/client/menu' className="text-white font-bold mr-4">Petite faim</Link>
+                                    <Link to='/client/petitefaim' className="text-white font-bold mr-4">Petite faim</Link>
                                     <Link to='/cuisine/command' className="text-white font-bold mr-4">Commande cuisine</Link>
                                     <Link to='/admin/menu/create' className="text-white font-bold mr-4">Create Menu</Link>
+                                    <Link to='/admin/burger/create' className="text-white font-bold mr-4">Create Burger</Link>
+                                    <Link to='/admin/drink/create' className="text-white font-bold mr-4">Create Drink</Link>
                                     <Link to='/client/panier/:id' className="text-white font-bold mr-4">Panier</Link>
                                 </div>
                                 <button className="bg-transparent border border-white hover:border-gray-200 text-white hover:text-gray-500 py-2 px-4 rounded mr-4 flex-end"

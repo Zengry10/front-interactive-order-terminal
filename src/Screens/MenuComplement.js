@@ -12,6 +12,8 @@ export default function MenuComplement(){
     const { storeMenu, setStoreMenu } = useContext(StoreContext);
     let [textRemoveIngredient, setTextRemoveIngredient] = useState("")
     const [isRemoved, setIsRemoved] = useState(false);
+    // console.log(article)
+
 
 
 
