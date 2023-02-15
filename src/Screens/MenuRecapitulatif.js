@@ -28,6 +28,8 @@ export default function Recapitulatif(){
             res.json().then((json) => {
               if (res.ok) {
                 // navigate('/client/menu')
+                console.log(article.id)
+                navigate('/client/panier/' + article.id)
               } else {
                 alert('Donnée invalide');
               }

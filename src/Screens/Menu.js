@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom"
 import { StoreContext } from '../Providers/Store'
 import { useContext } from "react"
@@ -6,10 +6,11 @@ import { useContext } from "react"
 
 export default function Menu(){
  const [articles, setArticles] = useState('')
- const { role, requestOptions } = useContext(StoreContext);
+ const { role, requestOptions, token } = useContext(StoreContext);
 //  console.log(requestOptions)
 console.log(role)
 
+const fetchSomthing = useCallback(() => console.log(articles), [])
 
 function deleteMenu(id) {
     fetch('http://localhost:3333/menus/' + id, {
@@ -22,7 +23,7 @@ function deleteMenu(id) {
       .then((res) => {
         res.json().then((json) => {
           if (res.ok) {
-            alert('Donnée envoyée')
+            setArticles(old => old.filter(article => article.id !== id))
             // navigate('/client/menu')
           } else {
             alert('Donnée invalide');
@@ -34,6 +35,7 @@ function deleteMenu(id) {
         console.error(error);
       });
   }
+
 
 
     function fetchMenu(){
@@ -49,6 +51,11 @@ function deleteMenu(id) {
         fetchMenu()
     }, [])
 
+    useEffect(() => {
+      if (token){
+        fetchMenu()
+      }
+    }, [token])
  
 
     if (articles) {

@@ -31,7 +31,6 @@ export default function Login(closeModalLogin){
                         setToken(json.token.token)
                         console.log(token)
                         navigate('/client/menu')
-
                     }
                     else{
                         alert('Donnée invalide')

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom"
 import { StoreContext } from '../Providers/Store'
 import { useContext } from "react"
@@ -6,7 +6,7 @@ import { useContext } from "react"
 
 export default function Petitefaim(){
 
-
+    const fetchSomthing = useCallback(() => console.log(articles), [])
     const [articles, setArticles] = useState('')
     const {storeMenu, requestOptions, role} = useContext(StoreContext)
     
@@ -36,7 +36,7 @@ function deleteBurger(id) {
       .then((res) => {
         res.json().then((json) => {
           if (res.ok) {
-            alert('Donnée envoyée')
+            setArticles(old => old.filter(article => article.id !== id))
             // navigate('/client/menu')
           } else {
             alert('Donnée invalide');

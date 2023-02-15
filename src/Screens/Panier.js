@@ -79,7 +79,6 @@ export default function Panier(){
             setArticle(location.state.article)
         } else {
             setError("Les données ne sont pas disponibles")
-            navigate("/")
         }
 
     }, [])
@@ -142,7 +141,7 @@ export default function Panier(){
           })}
 
           <div className="flex justify-center">
-            <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onClick={() => SendDataOrder()}>
+            <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" onClick={() => alert('Votre commande a bien été prise en compte') + navigate('/client/menu')}>
               Commander
             </button>
           </div>

@@ -96,7 +96,7 @@ export default function Nav(){
                         <>
                             <div className='flex '>
                                 <Link to='/client/menu' className="text-white font-bold mr-4">Nos Menus</Link>
-                                <Link to='/client/menu' className="text-white font-bold mr-4">Petite faim</Link>
+                                <Link to='/client/petitefaim' className="text-white font-bold mr-4">Petite faim</Link>
                                 <Link to='/client/panier/:id' className="text-white font-bold mr-4">Panier</Link>
                             </div>
                         </>
